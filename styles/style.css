@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.875rem;
+  background-color: rgb(255, 235, 235);
+  color: rgb(51, 51, 51);
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: rgb(51, 51, 51);
+  font-weight: 700;
+}
+
+.flex {
+  display: flex;
+}
+.flex-jc-sb {
+  justify-content: space-between;
+}
+.flex-jc-c {
+  justify-content: center;
+}
+.flex-ai-c {
+  align-items: center;
+}
+
+button, main__addTodo .addTodoButton,
+.main__addTodo .addTodoButton,
+.button {
+  padding: 0.875rem 1.2rem;
+  border-radius: 0px 15% 15% 0px;
+  border: 0px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, rgb(173, 228, 219), rgb(109, 169, 228));
+  color: rgb(255, 235, 235);
+  font-weight: 400;
+  text-align: center;
+}
+
+main__todos ul li.checked::before,
+.main__todos ul li.checked::before, main__todos ul li::before,
+.main__todos ul li::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 1rem;
+  left: 1.125rem;
+  transform: rotate(45deg);
+  height: 0.65rem;
+  width: 0.45rem;
+}
+
+/*.hide-for-mobile {
+  @include breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}*/
+.header nav {
+  padding: 1.5rem;
+}
+
+main__addTodo input,
+.main__addTodo input {
+  margin: 0;
+  border: none;
+  width: 75%;
+  padding: 10px;
+  font-size: 0.875rem;
+  font-family: "Raleway", sans-serif;
+  box-shadow: 4px 10px 16px 0 rgba(246, 186, 111, 0.2);
+}
+main__addTodo .addTodoButton,
+.main__addTodo .addTodoButton {
+  transition: 0.3s;
+}
+main__addTodo .addTodoButton:hover,
+.main__addTodo .addTodoButton:hover {
+  color: rgb(51, 51, 51);
+}
+main__todos ul,
+.main__todos ul {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+main__todos ul li::before,
+.main__todos ul li::before {
+  border-color: rgba(255, 235, 235, 0.4);
+}
+main__todos ul li,
+.main__todos ul li {
+  position: relative;
+  margin: 3px 0px;
+  padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  background: rgb(253, 244, 245);
+  transition: 0.2s;
+  border-radius: 5px;
+  overflow: hidden;
+}
+main__todos ul li:nth-child(odd),
+.main__todos ul li:nth-child(odd) {
+  background: rgb(255, 243, 226);
+}
+main__todos ul li:hover,
+.main__todos ul li:hover {
+  font-size: 1.15rem;
+  background: linear-gradient(45deg, rgb(173, 228, 219), rgba(109, 169, 228, 0.5));
+}
+main__todos ul li.checked,
+.main__todos ul li.checked {
+  background: rgba(240, 238, 237, 0.8);
+  color: white;
+  text-decoration: line-through;
+}
+main__todos ul li.checked::before,
+.main__todos ul li.checked::before {
+  border-color: white;
+}
+main__todos ul li.checked > .todo__closeButton:hover,
+.main__todos ul li.checked > .todo__closeButton:hover {
+  color: rgb(51, 51, 51);
+  background-color: rgb(253, 244, 245);
+}
+main__todos .todo__closeButton,
+.main__todos .todo__closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.75rem 1rem;
+}
+main__todos .todo__closeButton:hover,
+.main__todos .todo__closeButton:hover {
+  background-color: rgb(173, 228, 219);
+  color: white;
+  border-radius: 5%;
+}/*# sourceMappingURL=style.css.map */

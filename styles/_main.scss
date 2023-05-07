@@ -1,0 +1,95 @@
+main,
+.main {
+  &__addTodo {
+
+
+    input {
+      margin: 0;
+      border: none;
+      width: 75%;
+      padding: 10px;
+      font-size: $font-sm;
+      font-family: 'Raleway', sans-serif;
+      box-shadow: 4px 10px 16px 0 rgba($orange, 0.2);
+    }
+
+    .addTodoButton {
+      @extend button;
+      transition: 0.3s;
+
+      &:hover {
+        color: $almostBlack;
+      }
+    }
+  }
+
+  &__todos {
+
+    // Todo List
+    ul {
+      margin: .5rem;
+      padding: .5rem;
+
+      li::before {
+        @extend %check-mark;
+        border-color: rgba($peach, 0.4);
+
+      }
+
+      li {
+        position: relative;
+        margin: 3px 0px;
+        padding: .75rem .5rem .75rem 2.5rem;
+        list-style: none;
+        cursor: pointer;
+        font-size: 1.125rem;
+        background: $pink;
+        transition: 0.2s;
+        border-radius: 5px;
+        overflow: hidden;
+
+        &:nth-child(odd) {
+          background: $beige;
+        }
+
+        &:hover {
+          font-size: 1.15rem;
+          background: linear-gradient(45deg, $teal, rgba($blue, 0.5));
+        }
+
+        &.checked {
+          background: rgba($grey, 0.8);
+          color: white;
+          text-decoration: line-through;
+        }
+
+        &.checked::before {
+          @extend %check-mark;
+          border-color: white;
+        }
+
+        &.checked>.todo__closeButton:hover {
+          color: $almostBlack;
+          background-color: ($pink);
+        }
+
+      }
+
+    }
+
+    .todo__closeButton {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: .75rem 1rem;
+
+      &:hover {
+        background-color: $teal;
+        color: white;
+        border-radius: 5%;
+      }
+    }
+  }
+
+
+}
