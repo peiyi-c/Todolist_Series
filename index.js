@@ -37,7 +37,7 @@ function newElement() {
     document.getElementById("myTodos").appendChild(li);
   }
 
-  document.getElementById("newTodo").value = "";   // Empty input after a new todo is created
+  setTimeout(() => document.getElementById("newTodo").value = "", 100); // Empty input after a new todo is created
 
   const span = document.createElement("span");
   const txt = document.createTextNode("\u00D7");
