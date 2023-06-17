@@ -37,7 +37,13 @@ function newElement() {
     document.getElementById("myTodos").appendChild(li);
   }
 
-  setTimeout(() => document.getElementById("newTodo").value = "", 100); // Empty input after a new todo is created
+  // Empty input after a new todo is created
+  let timer;
+  function emptyInput() {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => document.getElementById("newTodo").value = "", 100);
+  }
+  emptyInput()
 
   const span = document.createElement("span");
   const txt = document.createTextNode("\u00D7");
@@ -61,4 +67,3 @@ inputValue.addEventListener("keyup", function (event) {
     document.getElementById("addTodoButton").click();
   }
 });
-
