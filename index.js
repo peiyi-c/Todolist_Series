@@ -1,69 +1,100 @@
-// ** Create a "x" button and append it to each list item ** //
-const myTodoList = document.getElementsByTagName('li')
-for (i = 0; i < myTodoList.length; i++) {
-  const span = document.createElement('span')
-  const doneSign = document.createTextNode('\u00D7')
-  span.className = 'todo__closeButton'
-  span.appendChild(doneSign)
-  myTodoList[i].appendChild(span)
-}
+const newTodo = document.getElementById('newTodo')
+const myTodos = document.getElementById('myTodos')
+const addBtn = document.getElementById('addTodoButton')
+// edit option
+let editElement;
+let editFlag = false;
+let editId = '';
 
-// ** Clicking on 'x' button can hide a todo ** //
-const closeButton = document.getElementsByClassName("todo__closeButton");
-for (i = 0; i < closeButton.length; i++) {
-  closeButton[i].onclick = function () {
-    let div = this.parentElement;
-    div.style.display = "none";
+// Event Listeners
+
+myTodos.addEventListener('click', checkItem, false)
+
+// add todo item process
+function addItem() {
+  let inputValue = newTodo.value
+  let id = new Date().getTime().toString()
+
+  if (inputValue.trim() == '') {
+    alert('Please write something!')
+  }
+  if (!editFlag) {
+    createItem(id, inputValue)
+    setBackToDefault()
+  } else if (editFlag) {
+    editElement.innerHTML = inputValue
+    setBackToDefault()
   }
 }
+// add todo item process 2
+function addTodoByEnter() {
+  let inputValue = document.getElementById("newTodo");
+  inputValue.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("addTodoButton").click();
+    }
+  });
 
-// ** Add a "checked" symbol when clicking on a list item ** //
-const list = document.querySelector('ul');
-list.addEventListener('click', function (e) {
+}
+addTodoByEnter()
+
+// create todo item
+function createItem(id, value) {
+  const li = document.createElement('li')
+  let attr = document.createAttribute('data-id');
+  attr.value = id
+  li.setAttributeNode(attr)
+  li.innerHTML = `
+          <span>${value}</span>
+          <span class="todo__editButton"><i class="fas fa-edit"></i></span>
+          <span class="todo__closeButton"><i class="fas fa-trash"></i></span>`
+
+  // addEventListner to trash icon 
+  const deleteBtn = li.querySelector('.fa-trash')
+  deleteBtn.addEventListener('click', removeItem)
+  const editBtn = li.querySelector('.fa-edit')
+  editBtn.addEventListener('click', editItem)
+
+  // append todo to list 
+  myTodos.appendChild(li)
+}
+
+// edit todo item
+function editItem(e) {
+  let li = e.target.parentElement.parentElement
+  let id = li.dataset.id
+  editElement = e.target.parentElement.previousElementSibling
+  newTodo.value = editElement.innerHTML
+  editFlag = true
+  editId = id
+  addBtn.textContent = 'Edit'
+}
+
+// remove todo item
+function removeItem(e) {
+  let todo = e.target.parentElement.parentElement
+  todo.remove()
+}
+
+// check todo item
+function checkItem(e) {
+
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked');
   }
-}, false);
-
-// ** Create a new list item when clicking on the "Add" button ** //
-function newElement() {
-  let inputValue = document.getElementById("newTodo").value;
-  let li = document.createElement("li");
-  let t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue.trim() === '') {
-    alert("Oohh, too fast!! You must write something!");
-  } else {
-    document.getElementById("myTodos").appendChild(li);
-  }
-
-  // Empty input after a new todo is created
-  let timer;
-  function emptyInput() {
-    window.clearTimeout(timer);
-    timer = window.setTimeout(() => document.getElementById("newTodo").value = "", 100);
-  }
-  emptyInput()
-
-  const span = document.createElement("span");
-  const txt = document.createTextNode("\u00D7");
-  span.className = "todo__closeButton";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < closeButton.length; i++) {
-    closeButton[i].onclick = function () {
-      let div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
 }
 
-// ** Also, create a new list item when press enter in input ** //
-let inputValue = document.getElementById("newTodo");
-inputValue.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("addTodoButton").click();
-  }
-});
+
+// set back to default
+function setBackToDefault() {
+  let timer;
+  window.clearTimeout(timer);
+  timer = window.setTimeout(() => {
+    newTodo.value = "";
+    editFlag = false;
+    editId = "";
+    addBtn.textContent = "Add"
+  }, 100)
+
+}

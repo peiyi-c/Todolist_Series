@@ -7,7 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>meDaily</title>
   <link type="image/png" sizes="96x96" rel="icon" href="./images/icons8-chat-96.png">
+  <!-- font-awesome -->
+  <!-- <script src="https://kit.fontawesome.com/9b32158501.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
   <link rel="stylesheet" href="./styles/style.css">
+
+
 </head>
 
 <body>
@@ -21,17 +26,13 @@
   <main class="main">
 
     <div class="main__addTodo flex flex-jc-c">
-      <input type="text" id="newTodo" maxlength="200" placeholder=" new todo...">
-      <span onclick="newElement()" class="addTodoButton" id="addTodoButton">Add</span>
+      <input type="text" id="newTodo" maxlength="40" placeholder=" new todo...">
+      <span onclick="addItem()" class="addTodoButton" id="addTodoButton">Add</span>
     </div>
     <div class="main__todos">
       <ul id="myTodos">
-        <li>Sign up aerial yoga class</li>
-        <li class="checked">Pay bills</li>
-        <li>Finish js projects</li>
-        <li>Update blog posts & reply comments</li>
-        <li>Wash the dishes</li>
-        <li>Order pizza for birthday party</li>
+
+
       </ul>
     </div>
 

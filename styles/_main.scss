@@ -81,10 +81,23 @@ main,
       position: absolute;
       right: 0;
       top: 0;
-      padding: .75rem 1rem;
+      padding: .8rem .9rem;
 
       &:hover {
         background-color: $teal;
+        color: white;
+        border-radius: 5%;
+      }
+    }
+
+    .todo__editButton {
+      position: absolute;
+      right: 2.8rem;
+      top: 0;
+      padding: .75rem .75rem .75rem 1rem;
+
+      &:hover {
+        background-color: $blue;
         color: white;
         border-radius: 5%;
       }
