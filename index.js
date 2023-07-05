@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', loadLocalStorage)
 function addItem() {
   let inputValue = newTodo.value
   let id = new Date().getTime().toString()
-
   if (inputValue.trim() == '') {
     alert('Please write something!')
   }
@@ -75,7 +74,6 @@ function editItem(e) {
 function removeItem(e) {
   let todo = e.target.parentElement.parentElement
   let id = todo.dataset.id
-  console.log(todo)
   todo.remove()
   removeFromLocalStorage(id)
 }
@@ -141,4 +139,3 @@ function loadLocalStorage() {
     })
   }
 }
-
