@@ -1,15 +1,17 @@
 const newTodo = document.getElementById('newTodo')
 const myTodos = document.getElementById('myTodos')
 const addBtn = document.getElementById('addTodoButton')
-// edit option
+
+// edit mode 
 let editElement;
 let editFlag = false;
 let editId = '';
 
 // Event Listeners
-
 myTodos.addEventListener('click', checkItem, false)
 newTodo.addEventListener('keyup', addItemByEnter)
+window.addEventListener('DOMContentLoaded', loadLocalStorage)
+
 // add todo item process
 function addItem() {
   let inputValue = newTodo.value
@@ -20,12 +22,15 @@ function addItem() {
   }
   if (!editFlag) {
     createItem(id, inputValue)
+    addToLocalStorage(id, inputValue)
     setBackToDefault()
   } else if (editFlag) {
     editElement.innerHTML = inputValue
+    editLocalStorage(editId, inputValue)
     setBackToDefault()
   }
 }
+
 // add todo item process 2
 function addItemByEnter(e) {
   if (e.keyCode === 13) {
@@ -69,17 +74,18 @@ function editItem(e) {
 // remove todo item
 function removeItem(e) {
   let todo = e.target.parentElement.parentElement
+  let id = todo.dataset.id
+  console.log(todo)
   todo.remove()
+  removeFromLocalStorage(id)
 }
 
 // check todo item
 function checkItem(e) {
-
   if (e.target.tagName === 'LI') {
     e.target.classList.toggle('checked');
   }
 }
-
 
 // set back to default
 function setBackToDefault() {
@@ -93,3 +99,46 @@ function setBackToDefault() {
   }, 100)
 
 }
+
+// * Local Storage * //
+function addToLocalStorage(id, value) {
+  const todo = { id, value }
+  let todos = getLocalStorage()
+  todos.push(todo)
+  localStorage.setItem('todoList', JSON.stringify(todos))
+}
+
+function removeFromLocalStorage(id) {
+  let todos = getLocalStorage() || []
+  todos = todos.filter((todo) => {
+    if (todo.id !== id) {
+      return todo
+    }
+  })
+  localStorage.setItem("todoList", JSON.stringify(todos))
+}
+
+function editLocalStorage(id, value) {
+  let todos = getLocalStorage()
+  todos.map((todo) => {
+    if (todo.id == id) {
+      todo.value = value
+    }
+    return todo
+  })
+  localStorage.setItem('todoList', JSON.stringify(todos))
+}
+
+function getLocalStorage() {
+  return JSON.parse(localStorage.getItem('todoList')) || []
+}
+
+function loadLocalStorage() {
+  let todos = getLocalStorage()
+  if (todos.length) {
+    todos.forEach((todo) => {
+      createItem(todo.id, todo.value)
+    })
+  }
+}
+
