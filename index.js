@@ -9,7 +9,7 @@ let editId = '';
 // Event Listeners
 
 myTodos.addEventListener('click', checkItem, false)
-
+newTodo.addEventListener('keyup', addItemByEnter)
 // add todo item process
 function addItem() {
   let inputValue = newTodo.value
@@ -27,17 +27,12 @@ function addItem() {
   }
 }
 // add todo item process 2
-function addTodoByEnter() {
-  let inputValue = document.getElementById("newTodo");
-  inputValue.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      document.getElementById("addTodoButton").click();
-    }
-  });
-
+function addItemByEnter(e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    document.getElementById("addTodoButton").click();
+  }
 }
-addTodoByEnter()
 
 // create todo item
 function createItem(id, value) {
