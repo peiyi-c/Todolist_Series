@@ -1,0 +1,23 @@
+li>label[for='todo'] {
+  width: 80%;
+  margin: 0.25rem 0;
+}
+
+li:nth-child(odd) {
+  color: #3b6363;
+}
+
+li:nth-child(even) {
+  color: #2f4f4a;
+}
+
+.checked {
+  color: #ccc;
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.fa {
+  margin: 0 5px;
+  color: #bbb;
+}
