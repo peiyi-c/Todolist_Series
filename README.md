@@ -1,7 +1,7 @@
 # TodoList_Series
 
+<code>We all love todolists! </code>
 
-We all love todolists! 
 
 |Name|Project|Preview 🔍|
 |-----------|-----------|-----------|
