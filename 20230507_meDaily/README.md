@@ -3,7 +3,7 @@
 
 ### Introduction
 This is a todo list called meDaily. 
-:star: [Check out this page for preview!](https://peiyi-c.github.io/meDaily_todoList/) :star2:
+:star: [Check out this page for preview!](https://hurt-pan.surge.sh/) :star2:
 
 ### Functions
 * create new todos by clicking on add button or pressing enter in input
