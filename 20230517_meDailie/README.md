@@ -3,7 +3,7 @@
 
 ### Introduction
 This is a todo list called meDailie.  
-🧁 [Check out this page for preview!](https://peiyi-c.github.io/meDailie_todoList/) 🧁
+🧁 [Check out this page for preview!](https://rough-laugh.surge.sh/) 🧁
 
 ### Functions
 * create new todos by clicking on add button or pressing enter in input
