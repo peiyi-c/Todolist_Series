@@ -1,8 +1,7 @@
 # TodoList_Series
 
 
-We all love todolists! 🔍
-Here you can find my todolist practices.
+We all love todolists! 
 
 |Name|Project|Preview 🔍|
 |-----------|-----------|-----------|
